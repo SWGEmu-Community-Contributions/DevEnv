@@ -1,0 +1,150 @@
+#!/bin/bash
+#
+# start - Initial setup of IDE
+#
+# Author: Scurby <scurby@swgemu.com>
+#
+# Created: Mon Apr 28 12015
+#
+# 
+# FIXME
+
+logger -t start "** START **"
+
+##############################################################################
+# Common functions and setup
+##############################################################################
+yorn() {
+  echo -n -e "$@ Y\b"
+  read yorn
+  case $yorn in
+    [Nn]* ) return 1;;
+  esac
+  return 0
+}
+
+nory() {
+  echo -n -e "$@ N\b"
+  read yorn
+  case $yorn in
+    [Yy]* ) return 0;;
+  esac
+  return 1
+}
+
+logmsg() {
+  echo "${tc_smso}**${tc_rmso} $*"
+  logger -t start "$*"
+}
+
+logstep() {
+  let "step=$step + 1"
+  echo ${tc_smso}$(head -c $(tput cols) < /dev/zero | tr '\0' '*')${tc_rmso}
+  echo "${tc_smso}**${tc_rmso} STEP $step >> $*"
+  logger -t start "STEP $step >> $*"
+}
+
+step=0
+tc_smso=$(tput smso)
+tc_rmso=$(tput rmso)
+
+##############################################################################
+# TODO IDE picker
+##############################################################################
+logstep "choose ide"
+
+export IDE=$(cat ~/.ide 2> /dev/null)
+
+while [ ! -n "$IDE" ]
+do
+  read -p "Would you prefer Eclipse, base, or QT IDE? eclipse" ed
+  case $ed in
+   [Bb][Aa][Ss][Ee]* ) echo 'base' > ~/.ide ;;
+   [Qq][Tt] ) echo 'QT' > ~/.ide ;;
+   * ) echo 'eclipse' > ~/.ide ;;
+  esac
+
+  export IDE=$(cat ~/.ide 2> /dev/null)
+done
+
+logmsg "IDE set to: $IDE"
+
+##
+#do
+#      $VISUAL $runcfg  ,  $VISUAL -w -s $runcfg
+##
+      
+
+
+##############################################################################
+# QT Creator setup
+# TODO
+#cd setup
+# wget http://download.qt.io/official_releases/online_installers/qt-opensource-linux-x64-online.run
+#set as executable and open
+#
+# official_releases LINK -http://download.qt.io/official_releases/qt/5.4/5.4.1/qt-opensource-linux-x64-5.4.1.run.mirrorlist
+##############################################################################
+logstep "Setup QT"
+  logmsg "See this link -http://download.qt.io/official_releases/qt/5.4/5.4.1/qt-opensource-linux-x64-5.4.1.run.mirrorlist"
+  logmsg "wget http://download.qt.io/official_releases/online_installers/qt-opensource-linux-x64-online.run"
+  logmsg "set as executable and open"
+
+
+
+##############################################################################
+# Setup eclipse if we have the setup file
+# TODO Edit for working directory name
+# TODO Edit eclipse_base= to desired eclipse tarball
+#####################
+#  Base install option -eclipse 3.8
+#sudo apt-get update
+#sudo apt-get install eclipse
+#sudo apt-get install eclipse-cdt
+#sudo apt-get install eclipse-egit
+#OR
+#cd setup
+#wget http://developer.eclipsesource.com/technology/epp/luna/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
+##############################################################################
+logstep "Setup Eclipse"
+
+eclipse_base=~/setup/eclipse-cpp-kepler-SR2-linux-gtk-x86_64.tar.gz
+#eclipse_base=~/setup/eclipse-clean.tar.gz
+
+if [ ! -f $eclipse_base ]; then
+  logmsg "Missing $eclipse_base did you remove it?"
+else
+  if [ -d ~/eclipse ]; then
+    logmsg "Looks like eclipse is already installed"
+  else
+    logmsg "Restoring basic eclipse install from $eclipse_base"
+    cd ~
+    ~/bin/bar $eclipse_base | tar xfz -
+    logmsg "Import eclipse project settings (might take a few minutes)"
+    for i in Core3/MMOCoreORB PublicEngine/MMOEngine
+    do
+      if [ -f ~/workspace/$i/.project ]; then
+        logmsg "Importing $i"
+        ~/eclipse/eclipse \
+	  -nosplash \
+	  -data ~/workspace \
+	  -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+	  -import ~/workspace/$i
+      else
+        logmsg "Missing project file for $i?"
+      fi
+    done
+
+    for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
+    do
+      logmsg "Setup Egit properties for "$(basename $dir)
+      cd $dir
+      tar xzf ~/setup/Egit-properties.tar.gz
+    done
+
+    logmsg "Eclipse setup and import complete"
+  fi
+fi
+
+exit 0
+

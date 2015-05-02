@@ -1,0 +1,4 @@
+#!/bin/bash
+#
+# FIXME
+~/bin/e --launcher.openFile "$1"

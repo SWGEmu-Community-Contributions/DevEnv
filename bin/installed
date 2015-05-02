@@ -1,0 +1,84 @@
+#!/bin/bash
+#
+# installed - Package and version check sent to /home/pgklist.txt
+#
+# Author: Scurby <scurby@swgemu.com>
+#
+# Created: Mar 5 2015
+#
+# TODO finish this
+
+
+logger -t installed "** INSTALLED **"
+
+##############################################################################
+# Common functions and setup
+##############################################################################
+yorn() {
+  echo -n -e "$@ Y\b"
+  read yorn
+  case $yorn in
+    [Nn]* ) return 1;;
+  esac
+  return 0
+}
+
+nory() {
+  echo -n -e "$@ N\b"
+  read yorn
+  case $yorn in
+    [Yy]* ) return 0;;
+  esac
+  return 1
+}
+
+logmsg() {
+  echo "${tc_smso}**${tc_rmso} $*"
+  logger -t installed "$*"
+}
+
+logstep() {
+  let "step=$step + 1"
+  echo ${tc_smso}$(head -c $(tput cols) < /dev/zero | tr '\0' '*')${tc_rmso}
+  echo "${tc_smso}**${tc_rmso} STEP $step >> $*"
+  logger -t installed "STEP $step >> $*"
+}
+
+step=0
+tc_smso=$(tput smso)
+tc_rmso=$(tput rmso)
+
+#####################
+# Requried packages verion or pkg listing output to pgklist.txt
+# TODO append pkglist().txt file name. include date/time/header 
+#####################
+
+cd 
+  rm version.txt
+  rm pkglist.txt
+  echo 2>&1 | tee -a pkglist.txt
+  echo "***   java " | tee -a version.txt
+  java -version 2>&1 | tee -a version.txt
+  echo 2>&1 | tee -a version.txt
+  echo "***   LUA " | tee -a version.txt
+  lua -v 2>&1 | tee -a version.txt
+  echo 2>&1 | tee -a version.txt
+    for i in ack automake bash g++ gcc gdb git grep libtool make mysql screen
+      do
+        logmsg " ${i} "
+        echo 2>&1 | tee -a version.txt
+        echo "***   ${i} " | tee -a version.txt
+        ${i} --version 2>&1 | tee -a version.txt
+        echo 2>&1 | tee -a version.txt
+      done
+
+    for i in db5.1 libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev  libgtest-dev openjdk-6-jre openjdk-6-jre-headless
+      do
+        logmsg " ${i} "
+        echo 2>&1 | tee -a pkglist.txt
+        echo "***   ${i} " | tee -a pkglist.txt
+        dpkg -l | grep ${i} | grep ii | tee -a pkglist.txt
+        echo 2>&1 | tee -a pkglist.txt
+      done
+  logmsg " See ~/home/ folder..."
+exit 0

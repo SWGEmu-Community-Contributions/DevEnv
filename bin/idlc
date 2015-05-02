@@ -1,0 +1,22 @@
+#!/bin/bash
+
+##############################################################################
+# Make easy links 
+# Option 1
+# sudo cp /home/swgemu/workspace/MMOEngine/bin/idlc /usr/local/bin && sudo chmod 755 /usr/local/bin/idlc
+##############################################################################
+
+cd ~/workspace
+rm -f MMOCoreORB MMOEngine Core3/MMOEngine
+(cd $PWD/Core3;ln -s ../PublicEngine/MMOEngine .)
+ln -s PublicEngine/MMOEngine .
+ln -s Core3/MMOCoreORB .
+ls -l MMOCoreORB MMOEngine Core3/MMOEngine | while read f
+
+do
+  logmsg $f
+    if [ -f /usr/local/bin/idlc ]; then
+      sudo cp /home/swgemu/workspace/MMOEngine/bin/idlc /usr/local/bin
+      sudo chmod 755 /usr/local/bin/idlc
+    fi
+done

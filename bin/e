@@ -1,0 +1,5 @@
+#!/bin/bash
+#
+# FIXME
+nohup ~/eclipse/eclipse $@ > ~/tmp/nohup.out 2>&1 &
+

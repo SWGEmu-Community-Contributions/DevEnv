@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# setup - Downloads and installs the setup scripts
+#
+# Created by: Scurby <scurby@swgemu.com>
+#
+# Date: Tuesday, April 28 2015
+cd && sudo apt-get install -y git && git clone https://github.com/Scurby/deb7.git && mkdir bin && cp -i /home/swgemu/deb7/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/deb7/setup/* /home/swgemu/setup/ && mkdir run && cd run && mkdir conf && cd && cp -i /home/swgemu/deb7/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot

@@ -1,0 +1,110 @@
+#!/bin/bash
+#
+# Headless Dropbox
+#
+# You can install Dropbox on a Linux server or any Linux system that doesn't have a monitor or a GUI Windowing System.
+
+# I recently installed Dropbox on my Digital Ocean Droplet, running Ubuntu 12.10 server. I did not figure this all out on my own. I read the sources mentioned at the bottom of this post. However, some of the information was incomplete or contained broken links, and I ran into other issues. So this this blog post is more of about how I got it working, in hopes that you won't encounter the same issues that I did.
+
+
+
+
+
+echo "Sources:"
+echo "https://www.dropbox.com/install?os=linux"
+
+echo "First, you will need to link your Linux machine with your Dropbox account by downloading and running a Dropbox server script called dropboxd:"
+  
+echo "cd  # changes to your $HOME directory"
+echo "wget -O - "https://www.dropbox.com/download?plat=lnx.x86"|tar xzf -"
+echo "~/.dropbox-dist/dropboxd"
+ 
+echo " Use the above command if you're running "uname -m" says i686."
+
+# FIXME
+if "uname -m" says x86_64.; then
+  cd
+  wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64"|tar xzf -
+  ~/.dropbox-dist/dropboxd
+fi
+echo " Use the above command if "uname -m" says x86_64."
+
+echo "The running dropboxd command should output a link for you to paste into a browser to link that system. I had issues with this at first and just had to keep rerunning the command over time and leaving it running until it finally started saying something. This was probably due to connection issues that you hopefully won't have. You can then verify that it's linked by logging into your dropbox web account and going under the 'Security' tab to see linked devices."
+
+echo " The link uses a token so you don't have to store your Dropbox password on the Linux instance."
+
+echo " Once Dropbox is linked you should see see your ~/Dropbox directory starting to sync. At this point you can temporarily stop the syncing by hitting ^C (Control-C) to stop dropboxd. Don't worry we'll finish syncing in a minute."
+
+echo " Let's download a nice python script to help us manage Dropbox better:"
+echo ""
+wget -O ~/bin/dropbox.py "http://www.dropbox.com/download?dl=packages/dropbox.py"
+chmod 755 ~/bin/dropbox.py
+
+
+echo " and download a bash script that we'll use to start and stop Dropbox:"
+#
+wget -O ~/bin/dropbox_temp "https://gist.githubusercontent.com/benhedrington/2347727/raw/108fc8af551cb4fdf7cdd08b891a45f405d283dc/dropbox"
+chmod u+x ~/bin/dropbox_temp
+
+
+echo "Edit ~/bin/dropbox_temp in whatever editor you like and change DROPBOX_USERS="user1 user2" to whatever users on your system you want to run dropbox clients"
+
+echo "Now move dropbox_temp script: "
+
+sudo mv ~/bin/dropbox_temp /etc/init.d/dropbox
+
+echo "and have it start when we boot: "
+sudo update-rc.d dropbox defaults
+
+echo "Close the dropboxd script if you still have it running manually: ^C. "
+
+echo "Check if dropbox is running, if it's not then start it: "
+sudo service dropbox status
+sudo service dropbox start
+
+echo "If it's is running then run: "
+dropbox.py status
+
+echo "If the status command says Dropbox is now downloading or syncing a ton of files, you might want to remove some directories from being sync'd to this linux machine by using Dropbox's Selective Sync. "
+
+echo "Selective Sync allows you to exclude certain folders that you don't want to sync to your linux server, e.g., maybe you don't need all your photos on it: "
+echo "cd ~/Dropbox "
+echo "ls"
+echo ""
+echo "Photos Projects Public iphone-photos"
+echo "Let's exclude the photos and Public directories:"
+echo "?"
+echo "$ dropbox.py exclude add Photos"
+echo "$ dropbox.py exclude add iphone-photos"
+echo "$ dropbox.py exclude add Public"
+echo "$ ls"
+echo ""
+echo "Projects"
+
+
+echo "At this point I would wait until dropbox.py status says 'Up to date' before editing files in your Dropbox folder. Just to make sure nothing gets corrupted. Once Dropbox has finished downloading everything, you should should try to sync files to AND from Dropbox. Make sure to test both directions and also test nested directories and your most important directories. I had an issue once where files in ~/Dropbox/Projects/notes/ wouldn't sync outgoing, yet ~/Dropbox/Projects/code/ files would. If it doesn't, you'll need to reinstall Dropbox (instructions are below). It shouldn't be a firewall issue because the docs specify that Dropbox runs on port 80. "
+
+echo " Alright, if you made this this far and everything seems working, the great!"
+
+echo "You may also want to delete any cached deleted files from the exclude step (NOTE: don't even try this unless you need it and at least until you're sure dropbox is already working):"
+
+
+echo "sudo service dropbox stop"
+echo "rm -rf ~/Dropbox/.dropbox.cache/*"
+echo "sudo service dropbox start"
+
+echo "Don't delete the .dropbox.cache dir itself, just its contents."
+
+echo "If you ever need to delete the dropbox instance:"
+
+echo "    - ^C to stop the dropboxd daemon"
+
+echo "    - rm -rf ~/.dropbox* ~/Dropbox"
+
+echo "     - Revoke the token that was issued for your sesion by clicking 'unlink' next to your Droplet's host name at https://www.dropbox.com/account#security"
+
+echo "It's important that you actually delete the ~/.drobox* folders, because your old key is stored there, and you have to generate a new one next time you run the original wget commands. So don't think of keeping it around as a shortcut to reinstalling."
+
+echo "Sources:"
+echo "https://www.dropbox.com/install?os=linux"
+echo "https://www.digitalocean.com/community/questions/dropbox-works-with-digitalocean-droplets"
