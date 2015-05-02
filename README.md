@@ -61,7 +61,7 @@ Run Updates
 # Import scripts  
 =====================
 
-	git clone https://github.com/Scurby/deb7.git
+	git clone https://github.com/Scurby/Testing.git
 
 ***********
 
