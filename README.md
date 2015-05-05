@@ -11,7 +11,7 @@ https://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/7
 	max cores
 	bridged network
 
-# Install OS - Debian 8
+# Install OS - Debian 8 Test
 https://www.debian.org/distrib/
 
 	(net install) 64 bit 
@@ -24,12 +24,15 @@ https://www.debian.org/distrib/
 Predefined software selections - Default selection
 
 	(*)Debian Desktop
+	    (*) Gnome
 	(*)Print Server
 	(*)Standard System Utilities
 ****************
-Config sudoer as needed
+# Config sudoer as needed 
+OR run 'bang' as root then use 'prime'
+copy into a root therminal:
 
-Run all CLI commands as sudo with user 'swgemu'. 
+	cd && apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && /sbin/reboot
 
 https://www.digitalocean.com/community/tutorials/how-to-add-delete-and-grant-sudo-privileges-to-users-on-a-debian-vps
 
@@ -61,6 +64,7 @@ Run Updates
 # Import scripts  
 =====================
 
+	sudo apt-get install git
 	git clone https://github.com/Scurby/Testing.git
 
 ***********
