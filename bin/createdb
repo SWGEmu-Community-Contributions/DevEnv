@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Borrowed from google search
-#
+# REQUIRES ROOT PERMISSIONS
 # Syntax = createdb dbname dbuser dbpass
   
 EXPECTED_ARGS=3
