@@ -29,11 +29,14 @@ Predefined software selections - Default selection
 	(*)Standard System Utilities
 ****************
 # Config sudoer as needed 
-OR run 'bang' as root then use 'prime'
-copy into a root therminal:
+Run 'bang' as root then use 'prime' 
+
+BANG; copy this into a root therminal: Installs git, downloads scripts and installs them. Reboots.
 
 	cd && apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && /sbin/reboot
 
+*******************
+use 'prime'
 https://www.digitalocean.com/community/tutorials/how-to-add-delete-and-grant-sudo-privileges-to-users-on-a-debian-vps
 
 We give users access to the sudo command with the visudo command. If you have not assigned additional privileges to any user yet, you will need to be logged in as root to access this command:
@@ -63,7 +66,7 @@ Run Updates
 =====================
 # Import scripts  
 =====================
-
+use 'bang' or 'setup' 
 	sudo apt-get install git
 	git clone https://github.com/Scurby/Testing.git
 
@@ -124,6 +127,7 @@ The following shell scripts can be run from the command line. They are numbered 
 	- Lua-5.1 - Berkely DB 5.0 - MySQL Server and Workbench
 	- start;
 
+2b. extras - TODO
 3. start - Initial setup of development environment
 
 	- Choose editor
@@ -154,6 +158,11 @@ The following shell scripts can be run from the command line. They are numbered 
 # The following scripts are also useful...
 
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager)
+
+prime - Provides info to set sudo permissions.
+bang - dl and install scripts as root
+setup - dl and install scripts as sudo
+godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
 myip -  display the ip of the VM and login port for quick configuration of the windows client
 
