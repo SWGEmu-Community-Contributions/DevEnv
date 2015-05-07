@@ -50,13 +50,13 @@ logmsg	"xclip - c&p application "
 logmsg	"terminator - terminal emulator "
 logmsg	"chromium - web browser "
 logmsg	"quassel - IRC client "
-logmsg  "dropbox - cloud based file sharing "
+logmsg  "TODO dropbox - cloud based file sharing "
 logmsg
 logmsg	    " Add or remove as needed in '/home/bin/options'"
 logmsg
 
 if yorn "Would you like to install the optional packages via sudo apt-get commands now??"; then
-  for i in vim xclip terminator chromium quassel dropbox
+  for i in vim xclip terminator chromium quassel
     do
       logmsg " Installing ${i} ... "
       sudo apt-get -q -y install ${i}
