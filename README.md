@@ -157,26 +157,26 @@ The following shell scripts can be run from the command line. They are numbered 
 **************************************************************************************
 # The following scripts are also useful...
 
-ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager)
+ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
 
 prime - Provides info to set sudo permissions.
-bang - dl and install scripts as root
-cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc
-createdb - mysql table user and pwd tool
-setup - dl and install scripts as sudo
+bang - dl and install scripts as root.
+cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc.
+createdb - mysql table user and pwd tool.
+setup - dl and install scripts as sudo.
 godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
-myip -  display the ip of the VM and login port for quick configuration of the windows client
+myip -  display the ip of the VM and login port for quick configuration of the windows client.
 
-updateip - Get ip address of local eth0 and update galaxy table as needed
+updateip - Get ip address of local eth0 and update galaxy table as needed.
 
-latest - do a quick git-stash, git-pull, and git-stash-apply so you can get to the latest code w/o loosing local work
+latest - do a quick git-stash, git-pull, and git-stash-apply so you can get to the latest code w/o loosing local work.
 
-freeze - Save your devenv state so you can repeat the same tests over and over
+freeze - Save your devenv state so you can repeat the same tests over and over.
 
-thaw - allow server to continue from previous state each time you run it
+thaw - allow server to continue from previous state each time you run it.
 
-installed - Package and version check sent to /home/<file>.txt
+installed - Package and version check sent to /home/<file>.txt.
 
 **************************************************************************************
 *FIXME* *FIXME* *FIXME*
