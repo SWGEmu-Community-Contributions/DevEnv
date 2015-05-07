@@ -29,14 +29,8 @@ Predefined software selections - Default selection
 	(*)Standard System Utilities
 ****************
 # Config sudoer as needed 
-Run 'bang' as root then use 'prime' 
+Run 'prime' 
 
-BANG; copy this into a root therminal: Installs git, downloads scripts and installs them. Reboots.
-
-	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot
-
-*******************
-use 'prime'
 https://www.digitalocean.com/community/tutorials/how-to-add-delete-and-grant-sudo-privileges-to-users-on-a-debian-vps
 
 We give users access to the sudo command with the visudo command. If you have not assigned additional privileges to any user yet, you will need to be logged in as root to access this command:
@@ -67,12 +61,17 @@ Run Updates
 # Import scripts  
 =====================
 use 'bang' or 'setup' 
-	sudo apt-get install git
-	git clone https://github.com/Scurby/Testing.git
 
+BANG; copy this into a sudo therminal: Installs git, downloads scripts and installs them. Reboots.
+
+	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cd run && mkdir conf && cd .. && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot
+	
 ***********
 
 Copy all files/folders into home folder
+	sudo apt-get install git
+	git clone https://github.com/Scurby/Testing.git
+
 
 /bin/ - place all shell scripts here - set as read/write/executable
 	TODO - Be sure that is executable:
