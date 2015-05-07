@@ -100,11 +100,19 @@ if [ -f $lua_ins ]; then
   logmsg " "
   logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
   logmsg " "
+fi
+
+####################
+# Busted Tests Install
+# installs luarocks and busted
+####################
+logstep "Busted Tests"
+if yorn "Would youlike to install Busted Tests?"; then
   logmsg "Installing busted test for lua..."
   sudo apt-get install luarocks
   sudo luarocks install busted
+  else
 fi
-   
 ####################
 # Berkely DB Install
 # wget http://download.oracle.com/berkeley-db/db-5.0.32.NC.tar.gz ## saved to home/setup/
