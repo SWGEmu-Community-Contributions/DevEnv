@@ -100,7 +100,7 @@ if [ -f $lua_ins ]; then
   logmsg " "
   logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
   logmsg " "
-  lognsg "Installing busted test for lua..."
+  logmsg "Installing busted test for lua..."
   sudo apt-get install luarocks
   sudo luarocks install busted
 fi
