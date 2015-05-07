@@ -161,6 +161,8 @@ ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManag
 
 prime - Provides info to set sudo permissions.
 bang - dl and install scripts as root
+cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc
+createdb - mysql table user and pwd tool
 setup - dl and install scripts as sudo
 godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
@@ -174,13 +176,14 @@ freeze - Save your devenv state so you can repeat the same tests over and over
 
 thaw - allow server to continue from previous state each time you run it
 
-installed - Package and version check sent to /home/*
+installed - Package and version check sent to /home/<file>.txt
 
 **************************************************************************************
 *FIXME* *FIXME* *FIXME*
 
 openfile {filename} - open file in eclipse *FIXME*
-
+ide - Choose IDE and/or options
+idlc - idlc install tool
 eclipse - install eclipse, import project and set git properties. *FIXME*
 	(Requires Egit-properties.tar.gz in /home/setup/
 
