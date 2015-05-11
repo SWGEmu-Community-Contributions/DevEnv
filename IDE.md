@@ -5,12 +5,11 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 	(Requires Egit-properties.tar.gz in /home/setup/
 
 **************************************************************************************
-Special Thanks to lordkator.
-**************************************************************************************
-
 ===============
-# Eclipse- Not complete
-http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-cpp-kepler-SR2-linux-gtk-x86_64.tar.gz&mirror_id=272
+# Eclipse  
+Not complete
+ 
+	http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/kepler/SR2/eclipse-cpp-kepler-SR2-linux-gtk-x86_64.tar.gz&mirror_id=272
 ---------------
 *Install Eclipse*
 
