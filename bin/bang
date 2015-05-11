@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# bang - Downloads and installs git, the setup scripts, and reboots, from a root terminal
+# bang - Downloads and installs git, the setup scripts, and reboots, from a sudo terminal
 #
 # Created by: Scurby <scurby@swgemu.com>
 #
 # Date: Tuesday, April 28 2015
 
-# Copy this into a root terminal. Hit enter. 
-apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && /sbin/reboot
+# Copy this into a sudo terminal. Hit enter. 
+cd && sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot
