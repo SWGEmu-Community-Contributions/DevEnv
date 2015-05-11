@@ -17,7 +17,7 @@ https://www.debian.org/distrib/
 	(net install) 64 bit 
 	Should work on any debian package distro
 ****************
-	username=swgemu  
+	username=swgemu  - TODO make configurable
 	password=123456
 	root pw=12345678
 ****************
@@ -60,44 +60,11 @@ Run Updates
 =====================
 # Import scripts  
 =====================
-use 'bang' or 'setup' 
-
-BANG; copy this into a sudo therminal: Installs git, downloads scripts and installs them. Reboots.
+Copy this series of commands into a sudo therminal: Installs git, downloads scripts and installs them. Reboots.
 
 	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cd run && mkdir conf && cd .. && cp -i /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot
 	
 ***********
-
-Copy all files/folders into home folder
-	sudo apt-get install git
-	git clone https://github.com/Scurby/Testing.git
-
-
-/bin/ - place all shell scripts here - set as read/write/executable
-	TODO - Be sure that is executable:
-	chmod +x /path/to/script
-
-/run/ - place run_gdb here
-
-/run/conf/ - should be empty.
-
-/setup/ - eclipse tarball and Egit-prop tarball here
-
-***********
-
-Code:
-
-	mkdir bin
-	cp -i /home/swgemu/deb7/bin/* /home/swgemu/bin/
-	mkdir setup
-	cp -i /home/swgemu/deb7/setup/* /home/swgemu/setup/
-	mkdir run
-	cd run
-	mkdir conf
-	cd
-	cp -i /home/swgemu/deb7/run/* /home/swgemu/run/
-	chmod -v +x /home/swgemu/bin/*
-
 =====================
 # Restart
 =====================
@@ -115,7 +82,6 @@ The following shell scripts can be run from the command line. They are numbered 
 	- vim 
 	- chromium 
 	- quassel
-	- dropbox
 	- first;
         
 2. first - Installs required packages and programs
@@ -187,6 +153,7 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 	(Requires Egit-properties.tar.gz in /home/setup/
 
 **************************************************************************************
+Special Thanks to lordkator.
 **************************************************************************************
 
 ===============
