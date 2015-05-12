@@ -37,29 +37,23 @@ tc_smso=$(tput smso)
 tc_rmso=$(tput rmso)
 
 #################
-# Optional packages
-# xclip terminator vim chromium quassel
-# TODO add more options. docs, git-review
+# Recommended packages
+# xclip terminator vim chromium quassel git-cola
+# TODO add more options. docs, 
 #################
-logstep "Optional packages."
-
-logmsg  " The following packages or programs are optional. Be prepared to enter password for sudo. "
+logstep "Recommended packages."
+logmsg  " The following packages or programs are recommended. "
 logmsg
-logmsg	"vim - editor "
-logmsg	"xclip - c&p application "
-logmsg	"terminator - terminal emulator "
-logmsg	"chromium - web browser "
-logmsg	"quassel - IRC client "
-logmsg  "TODO dropbox - cloud based file sharing "
-logmsg
-logmsg	    " Add or remove as needed in '/home/bin/options'"
+logmsg	" vim  xclip terminator chromium quassel git-cola etc. "
+logmsg	
+logmsg	    " Add or remove as needed in '/home/bin/options' "
 logmsg
 
 if yorn "Would you like to install the optional packages via sudo apt-get commands now??"; then
-  for i in vim xclip terminator chromium quassel
+  for i in vim xclip terminator chromium quassel git-cola git-review
     do
       logmsg " Installing ${i} ... "
-      sudo apt-get -q -y install ${i}
+      sudo apt-get -y install ${i}  # make silent
     done
   else
   logmsg " Edit this script as desired. " 
