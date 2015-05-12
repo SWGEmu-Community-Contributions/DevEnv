@@ -1,7 +1,6 @@
 # Testing
 Dev Env Setup Testing
 
-
 VirtualBox, VMWare, or native install. Edit as needed  
 https://www.virtualbox.org/wiki/Downloads  
 https://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/7_0
@@ -89,6 +88,7 @@ The following scripts can be run from the command line. They are numbered in the
 	- start;
 
 2b. extras - TODO
+
 3. start - Initial setup of development environment
 
 	- Choose editor
