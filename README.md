@@ -78,6 +78,8 @@ The following scripts can be run from the command line. They are numbered in the
 	- vim 
 	- chromium 
 	- quassel
+	- git-cola
+	- git-review
 	- first;
         
 2. first - Installs required packages and programs
