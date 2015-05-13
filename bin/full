@@ -126,6 +126,15 @@ if yorn "Would you like to install the recommended packages via sudo apt-get com
 fi
 
 #################
+#Dropbox headless
+#################
+logstep "Headless Dropbox"
+if yorn "Would you like to install Dropbox??"; then
+      cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+      nohup gnome-terminal --title 'Dropbox' -e ~/.dropbox-dist/dropboxd & disown
+fi
+
+#################
 # Required packages
 #################
 logstep "Required packages."
