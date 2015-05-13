@@ -4,8 +4,7 @@
 #
 #
 # open terminal - log in as root
-# su #-c apt-get
-#su -c apt-get
+
 
 ##############################################################################
 # Common functions and setup
@@ -22,32 +21,27 @@ yorn() {
 ##############################################################################
 cd
 clear
-echo " To edit sudo privelages enter 'su' in a terminal. You will be prompted for a root password. "
+echo "To edit sudo privelages enter 'su' in a terminal. You will be prompted for a root password. "
 echo "Once logged into the terminal as root, enter 'visudo' "
 echo
-
 echo "You will be taken into a text editor session with the file that defines sudo privileges pre-loaded. We will have to add our user to this file to grant our desired access rights."
 echo
-
 echo "Find the part of the file that is labeled *Allow members of group sudo to execute any command*. It should look something like this:"
 echo
-
 echo    "Allow members of group sudo to execute any command"
 echo    "%sudo   ALL=(ALL:ALL) ALL"
 echo	
-
 echo   "We give a user sudo privileges by copying the line beginning with "%sudo" and pasting it after. We then change the user "%sudo" on the new line to our new user, like this:"
 echo
-
 echo	"Allow members of group sudo to execute any command"
 echo	"%sudo   ALL=(ALL:ALL) ALL"
 echo	"%newuser   ALL=(ALL:ALL) ALL"
-
+echo
 echo    "We can now save the file and close it. By default, you can do that by typing Ctrl-X and then typing "Y" and pressing "Enter"."
 echo
-
 if yorn "Would you like to open a root terminal now?"; then
-    su
+#    su
+    nohup gnome-terminal --title 'prime' -e su
   else
   exit 0
 fi
