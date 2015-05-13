@@ -154,3 +154,6 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 **************************************************************************************
 Special Thanks to lordkator.
 **************************************************************************************
+
+Useful
+git log --pretty=format:'%h was %an, %ar, message: %s' -10
