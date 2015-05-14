@@ -253,9 +253,9 @@ else
     logmsg " Installing MySQL... "
     logmsg
   cd
-  sudo apt-get install -q -y mysql-server-core-5.5 > /dev/null 2>&1
-  sudo apt-get install -q -y mysql-server-5.5 > /dev/null 2>&1
-  sudo apt-get install -q -y mysql-workbench > /dev/null 2>&1 # not required. very useful.
+  sudo apt-get install -q -y mysql-server-core-5.5
+  sudo apt-get install -q -y mysql-server-5.5
+  sudo apt-get install -q -y mysql-workbench    # not required. very useful.
 fi
 
 ######################
