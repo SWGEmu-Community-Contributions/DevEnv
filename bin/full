@@ -139,10 +139,10 @@ fi
 #################
 logstep "Required packages."
 logmsg  " The following packages or programs are required. "
-logmsg	 "gcc, g++, git, gdb, automake, make, libreadline-gplv2-dev, libncurses5-dev, libneon27, libaprutil1-dev, libtool, openjdk-6-jre, openjdk-6-jre-headless, libgtest-dev, screen, Lua-5.1, Berkely DB 5.0, MySQL Server and Workbench "
+logmsg	 "gcc, g++, git, gdb, automake, make, libreadline-gplv2-dev, libncurses5-dev, libneon27, libaprutil1-dev, libtool, openjdk-6-jre, openjdk-6-jre-headless, libgtest-dev, libssl-dev, screen, Lua-5.1, Berkely DB 5.0, MySQL Server and Workbench "
 cd
 if yorn "Would you like to install the required packages now??"; then
-  for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev
+  for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev libssl-dev
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
@@ -253,18 +253,19 @@ else
     logmsg " Installing MySQL... "
     logmsg
   cd
-  sudo apt-get install -q -y mysql-server-core-5.5 > /dev/null 2>&1
-  sudo apt-get install -q -y mysql-server-5.5 > /dev/null 2>&1
-  sudo apt-get install -q -y mysql-workbench > /dev/null 2>&1 # not required. very useful.
+  sudo apt-get install mysql-server-core-5.5
+  sudo apt-get install mysql-server-5.5
+  sudo apt-get install mysql-workbench    # not required. very useful.
+  sudo apt-get install libmysqlclient-dev
 fi
 
 ######################
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-sudo apt-get update > /dev/null 2>&1
-sudo apt-get upgrade > /dev/null 2>&1
-sudo apt-get autoremove > /dev/null 2>&1
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove
 sudo service mysql start
 cd $dir
 rm db-5.0.32.NC.tar.gz

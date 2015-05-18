@@ -86,8 +86,13 @@ export ERRFILE="/tmp/run_dev$$"
     zcat ~/run/mysqldump.sql.gz | mysql swgemu
   fi
 
+<<<<<<< HEAD
   # Do we have a pre-made config file?
   # TODO test
+=======
+# Do we have a pre-made config file?
+# TODO test
+>>>>>>> 627a0a3d10b29e50aa6d64d5e51a705f3273466a
   if [ -f ~/run/conf/config.lua ]; then
       echo "** Using ~/run/conf/config.lua"
       cp -v ~/run/conf/config.lua conf/
