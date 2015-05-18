@@ -86,8 +86,8 @@ export ERRFILE="/tmp/run_dev$$"
     zcat ~/run/mysqldump.sql.gz | mysql swgemu
   fi
 
-Do we have a pre-made config file?
-TODO test
+  # Do we have a pre-made config file?
+  # TODO test
   if [ -f ~/run/conf/config.lua ]; then
       echo "** Using ~/run/conf/config.lua"
       cp -v ~/run/conf/config.lua conf/
@@ -106,7 +106,7 @@ TODO test
   # Setup ports based on PingPort in config
   ports=$(echo 'print(string.format("pingport=%d, port=%d\n", PingPort, PingPort+1))' | lua -l 'conf/config' -)
 
-  mysql swgemu -v -e "update galaxy set name = '$name', $ports;"
+  mysql -p123456 swgemu -v -e "update galaxy set name = '$name', $ports;"
   ~/bin/updateip
   echo "$0 STARTING SERVER UNDER GDB"
 ) 2>&1 | tee screenlog.0

@@ -55,7 +55,7 @@ if yorn "Would you like to install the required packages now??"; then
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
-        sudo apt-get -q -y install ${i}
+        sudo apt-get -q -y install ${i} >> install.txt
       done
   else
     logmsg " You need to do it before you can build the server. "
@@ -91,9 +91,9 @@ if [ -f $lua_ins ]; then
   for dir in ~/setup/
     do
       cd $dir
-      tar xzf ~/setup/lua-5.1.4.tar.gz > /dev/null 2>&1
+      tar xzf ~/setup/lua-5.1.4.tar.gz >> install.txt
       cd lua-5.1.4
-      sudo make linux install > /dev/null 2>&1
+      sudo make linux install >> install.txt
       sudo make test
       cd
     done
@@ -104,15 +104,15 @@ fi
 
 ####################
 # Busted Tests Install
-# installs luarocks and busted
+# FIXME installs luarocks and busted
 ####################
-logstep "Busted Tests"
-if yorn "Would youlike to install Busted Tests?"; then
-  logmsg "Installing busted test for lua..."
-  sudo apt-get install luarocks
-  sudo luarocks install busted
-  else
-fi
+#logstep "Busted Tests"
+#if yorn "Would you like to install Busted Tests?"; then
+#  logmsg "Installing busted test for lua..."
+#  sudo apt-get install -y luarocks >> install.txt
+#  sudo luarocks install busted >> install.txt
+#fi
+
 ####################
 # Berkely DB Install
 # wget http://download.oracle.com/berkeley-db/db-5.0.32.NC.tar.gz ## saved to home/setup/
@@ -150,9 +150,9 @@ if [ -f $bdb_pkg ]; then
        tar xzf ~/setup/db-5.0.32.NC.tar.gz
        cd db-5.0.32.NC
        cd build_unix
-       sudo ../dist/configure --enable-cxx > /dev/null 2>&1
-       sudo make > /dev/null 2>&1
-       sudo make install > /dev/null 2>&1
+       sudo ../dist/configure --enable-cxx >> install.txt
+       sudo make >> install.txt
+       sudo make install >> install.txt
        cd ..
        cd ..
        echo "/usr/local/BerkeleyDB.5.0/lib" | sudo tee -a /etc/ld.so.conf
@@ -181,10 +181,12 @@ else
     logmsg
     logmsg " Installing MySQL... "
     logmsg
-  cd
-  sudo apt-get install -q -y mysql-server-core-5.5
-  sudo apt-get install -q -y mysql-server-5.5
-  sudo apt-get install -q -y mysql-workbench # not required. very useful.
+  for i in mysql-server-core-5.5 mysql-server-5.5 mysql-workbench
+    do
+      cd
+      logmsg "Installing ${i} ..."
+      sudo apt-get install -q -y ${i} | tee -a install.txt
+    done
 fi
 
 ######################
@@ -192,8 +194,8 @@ fi
 ######################
 logstep "Finalizing install and removing un-needed files."
 
-sudo apt-get upgrade
-sudo apt-get autoremove
+sudo apt-get upgrade | tee -a install.txt
+sudo apt-get autoremove | tee -a install.txt
 sudo service mysql start
 cd $dir
 rm db-5.0.32.NC.tar.gz
