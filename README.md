@@ -65,11 +65,11 @@ Copy this series of commands into a sudo therminal: Installs git, downloads scri
 =====================
 # Restart
 
-RESTART!!!
+If your OS reboots when you run the commands above then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
 =====================
 # Run setup scripts
 =====================
-The following scripts can be run from the command line. They are numbered in the order I use them.
+The following scripts can be run from the command line. They are numbered in the order I use them. They will also output results to /home/install.txt
 
 1. options - Installs Optional packages
 
@@ -124,10 +124,10 @@ The following scripts can be run from the command line. They are numbered in the
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
 
 prime - Provides info to set sudo permissions.
-bang - dl and install scripts as root.
+bang - dl and install scripts
 cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc.
 createdb - mysql table user and pwd tool.
-setup - dl and install scripts as sudo.
+setup - dl and install scripts
 godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
 myip -  display the ip of the VM and login port for quick configuration of the windows client.
@@ -144,7 +144,7 @@ installed - Package and version check sent to /home/<file>.txt.
 
 **************************************************************************************
 *FIXME* *FIXME* *FIXME*
-
+dropbox - DL and install dropbox
 openfile {filename} - open file in eclipse *FIXME*
 ide - Choose IDE and/or options
 idlc - idlc install tool
@@ -152,8 +152,9 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 	(Requires Egit-properties.tar.gz in /home/setup/
 
 **************************************************************************************
-Special Thanks to lordkator.
+Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository was inspired by. 
+- Scurby
 **************************************************************************************
 
-Useful
+Useful Stuff
 git log --pretty=format:'%h was %an, %ar, message: %s' -10
