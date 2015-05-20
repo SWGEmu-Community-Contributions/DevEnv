@@ -64,8 +64,9 @@ Copy this series of commands into a sudo therminal: Installs git, downloads scri
 
 =====================
 # Restart
-
-	Your OS should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
+	
+Your OS should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
+	
 =====================
 # Run setup scripts
 =====================
