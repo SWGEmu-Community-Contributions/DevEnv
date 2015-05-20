@@ -51,7 +51,7 @@ logmsg	  "Lua-5.1 - Berkely DB 5.0 - MySQL Server and Workbench"
 logmsg 
 cd
 if yorn "Would you like to install the required packages now??"; then
-  for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev
+  for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev libssl-dev
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
@@ -181,12 +181,11 @@ else
     logmsg
     logmsg " Installing MySQL... "
     logmsg
-  for i in mysql-server-core-5.5 mysql-server-5.5 mysql-workbench
-    do
-      cd
-      logmsg "Installing ${i} ..."
-      sudo apt-get install -q -y ${i} | tee -a install.txt
-    done
+  cd
+  sudo apt-get install mysql-server-core-5.5
+  sudo apt-get install mysql-server-5.5
+  sudo apt-get install mysql-workbench    # not required. very useful.
+  sudo apt-get install libmysqlclient-dev
 fi
 
 ######################
