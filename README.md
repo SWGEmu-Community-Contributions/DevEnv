@@ -65,7 +65,7 @@ Copy this series of commands into a sudo therminal: Installs git, downloads scri
 =====================
 # Restart
 
-If your OS reboots when you run the commands above then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
+	Your OS should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
 =====================
 # Run setup scripts
 =====================
@@ -122,7 +122,7 @@ The following scripts can be run from the command line. They are numbered in the
 # The following scripts are also useful...
 
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
-
+full - options, first, and start scripts combined.
 prime - Provides info to set sudo permissions.
 bang - dl and install scripts
 cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc.
