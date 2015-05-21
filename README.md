@@ -61,12 +61,10 @@ Run Updates
 Copy this series of commands into a sudo therminal: Installs git, downloads scripts and installs them. Reboots.
 
 	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && cp -i /home/swgemu/Testing/README.md /home/swgemu/Documents && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -r /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && sudo /sbin/reboot
-
 =====================
 # Restart
 	
 Your OS should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
-	
 =====================
 # Run setup scripts
 =====================
@@ -118,17 +116,23 @@ The following scripts can be run from the command line. They are numbered in the
 	***NOTE: run_dev uses gdb in batch mode and starts with the commands
 	in ~/run/run_gdb which you can change to your pleasing;
 	(breakpoints, dumps, settings etc.)
-
 **************************************************************************************
 # The following scripts are also useful...
 
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
+
 full - options, first, and start scripts combined.
+
 prime - Provides info to set sudo permissions.
+
 bang - dl and install scripts
+
 cleanup_for_publish - Strips VM image down for distribution, creates version number, resets pwds, etc.
+
 createdb - mysql table user and pwd tool.
+
 setup - dl and install scripts
+
 godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
 myip -  display the ip of the VM and login port for quick configuration of the windows client.
@@ -146,16 +150,24 @@ installed - Package and version check sent to /home/<file>.txt.
 **************************************************************************************
 *FIXME* *FIXME* *FIXME*
 dropbox - DL and install dropbox
+
 openfile {filename} - open file in eclipse *FIXME*
+
 ide - Choose IDE and/or options
+
 idlc - idlc install tool
+
 eclipse - install eclipse, import project and set git properties. *FIXME*
 	(Requires Egit-properties.tar.gz in /home/setup/
 
 **************************************************************************************
-Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository was inspired by. 
+Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository was based on. 
 - Scurby
+
 **************************************************************************************
 
 Useful Stuff
-git log --pretty=format:'%h was %an, %ar, message: %s' -10
+
+	cd
+	git log --pretty=format:'%h was %an, %ar, message: %s' -10
+
