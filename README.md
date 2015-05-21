@@ -65,6 +65,7 @@ Copy this series of commands into a sudo therminal: Installs git, downloads scri
 # Restart
 	
 Your OS should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
+
 =====================
 # Run setup scripts
 =====================
@@ -168,6 +169,5 @@ Special Thanks to lordkator for the initial FastTrack VM Image and the scripts t
 
 Useful Stuff
 
-	cd
 	git log --pretty=format:'%h was %an, %ar, message: %s' -10
 
