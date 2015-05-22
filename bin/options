@@ -53,7 +53,7 @@ if yorn "Would you like to install the recommended packages via sudo apt-get com
   for i in vim xclip terminator chromium quassel git-cola git-review
     do
       logmsg " Installing ${i} ... "
-      sudo apt-get -y install ${i} >> install.txt
+      sudo apt-get -q -y install ${i} >> options.txt
     done
 fi
 
@@ -68,12 +68,13 @@ fi
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-  sudo apt-get -y upgrade >> install.txt
-  sudo apt-get autoremove >> install.txt
+  sudo apt-get -q -y update >> update.txt
+  sudo apt-get -q -y upgrade >> update.txt
+  sudo apt-get -q -y autoremove >> update.txt
   logmsg 
   logmsg "Thanks for the fish...  "
   logmsg 
-if yorn "Would you like to run 'first' now?'?"; then
+if yorn "Would you like to run 'first' now?"; then
    ~/bin/first
 fi
 exit 0
