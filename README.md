@@ -143,6 +143,7 @@ bang - dl's and installs these scripts
 cleanup_for_publish - Strips virtual machine down for distribution, creates version number, resets pwds, etc. USE WITH CAUTION!!!
 
 createdb - mysql table, user, and pwd tool.
+(http://jetpackweb.com/blog/2009/07/20/bash-script-to-create-mysql-database-and-user/)
 
 setup - dl and install scripts
 
@@ -158,7 +159,7 @@ freeze - Save your devenv state so you can repeat the same tests over and over.
 
 thaw - allow server to continue from previous state each time you run it.
 
-installed - Package and version check sent to /home/<file>.txt.
+installed - Package and version check saved to /home/<file>.txt.
 
 **************************************************************************************
 *FIXME* *FIXME* *FIXME*
