@@ -171,3 +171,5 @@ Useful Stuff
 
 	git log --pretty=format:'%h was %an, %ar, message: %s' -10
 
+	PATH=$PATH:$HOME/bin
+
