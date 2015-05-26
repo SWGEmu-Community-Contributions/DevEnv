@@ -51,7 +51,7 @@ logmsg	  "Lua-5.1 - Berkely DB 5.0 - MySQL Server and Workbench"
 logmsg 
 cd
 if yorn "Would you like to install the required packages now??"; then
-  for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev libssl-dev
+  for i in autoconf automake autotools-dev g++ gcc gccxml gdb git libc6-dev libdb-dev libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-7-jre openjdk-7-jre-headless libgtest-dev libssl-dev liblua5.1-0-dev 
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
@@ -193,8 +193,8 @@ fi
 ######################
 logstep "Finalizing install and removing un-needed files."
 
-sudo apt-get upgrade | tee -a install.txt
-sudo apt-get autoremove | tee -a install.txt
+#sudo apt-get upgrade | tee -a install.txt
+#sudo apt-get autoremove | tee -a install.txt
 sudo service mysql start
 cd $dir
 rm db-5.0.32.NC.tar.gz

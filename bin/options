@@ -68,9 +68,9 @@ fi
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-  sudo apt-get -q -y update >> update.txt
-  sudo apt-get -q -y upgrade >> update.txt
-  sudo apt-get -q -y autoremove >> update.txt
+#  sudo apt-get -q -y update >> update.txt
+#  sudo apt-get -q -y upgrade >> update.txt
+#  sudo apt-get -q -y autoremove >> update.txt
   logmsg 
   logmsg "Thanks for the fish...  "
   logmsg 

@@ -51,61 +51,6 @@ if [ -x /usr/bin/chromium ]; then
   BROWSER=/usr/bin/chromium
 fi
 
-##############
-#Eclipse Test
-#############
-logstep "Eclipse Test"
-# Edit package name as desired. CDT application required
-eclipse_base=~/setup/eclipse-cpp-kepler-SR2-linux-gtk-x86_64.tar.gz
-  logmsg " The org.eclipse.cdt.managedbuilder.core.headlessbuild application is part of the Eclipse C/C++ Development Tools (CDT), so you need to have that installed in order to use this application. "
-  logmsg " Eclipse 3.8 can be installed using 'sudo apt-get' commands "
-  logmsg 
-  logmsg " To install eclipse-cpp-kepler-SR2-linux-gtk-x86_64.tar.gz "
-  logmsg " Recomended Eclipse version is available for download at... "
-  logmsg " https://eclipse.org/downloads/packages/eclipse-ide-cc-developers/keplersr2 "
-  logmsg " Download eclipse tarbal to /home/setup "
-  logmsg " Edit eclipse_base file name accordingly on line 59 of /home/bin/eclipse "
-  if [ -d ~/eclipse ]; then
-  logmsg "Looks like eclipse is already installed"
-  else
-    logmsg "Restoring basic eclipse install from $eclipse_base"
-    sudo apt-get update
-    sudo apt-get install eclipse
-    sudo apt-get install eclipse-cdt
-    sudo apt-get install eclipse-egit
-    logmsg "Import eclipse project settings (might take a few minutes)"
-      for i in Core3/MMOCoreORB PublicEngine/MMOEngine
-      do
-        if [ -f ~/workspace/$i/.project ]; then
-          logmsg "Importing $i"
-          ~/eclipse/eclipse \
-	    -nosplash \
-	    -data ~/workspace \
-	    -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
-	    -import ~/workspace/$i
-        else
-          logmsg "Missing project file for $i?"
-    done
-  fi
-
-    for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
-    do
-      logmsg "Setup Egit properties for "$(basename $dir)
-      cd $dir
-      tar xzf ~/setup/Egit-properties.tar.gz
-    done
-
-    logmsg "Eclipse setup and import complete"
-fi
-exit 0
-#//
-Inside an existing Eclipse installation
-Add the following repository: http://download.eclipse.org/koneki/releases/stable from the "Help > Install New Software..." menu of your Eclipse 3.7+ workbench, and then check the "Lua Development Tools" feature.
-Should you want to install a different version than the latest stable one, check on the wiki the other update repositories available.
-
-Alternatively, you can install LDT using the Eclipse Marketplace.
-Just drag and drop the following button into your running Eclipse workbench, and the installation will begin!
-#//
 
 
 ##############################################################################
@@ -123,43 +68,43 @@ Just drag and drop the following button into your running Eclipse workbench, and
 #http://developer.eclipsesource.com/technology/epp/juno/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
 #
 ##############################################################################
-#logstep "Setup Eclipse"
+logstep "Setup Eclipse"
 
-#eclipse_base=~/setup/eclipse-clean.tar.gz
+eclipse_base=~/setup/eclipse-clean.tar.gz
 
-#if [ ! -f $eclipse_base ]; then
-#  logmsg "Missing $eclipse_base did you remove it?"
-#else
-#  if [ -d ~/eclipse ]; then
-#    logmsg "Looks like eclipse is already installed"
-#  else
-#    logmsg "Restoring basic eclipse install from $eclipse_base"
-#    cd ~
-#    ~/bin/bar $eclipse_base | tar xfz -
-#    logmsg "Import eclipse project settings (might take a few minutes)"
-#    for i in Core3/MMOCoreORB PublicEngine/MMOEngine
-#    do
-#      if [ -f ~/workspace/$i/.project ]; then
-#        logmsg "Importing $i"
-#        ~/eclipse/eclipse \
-#	  -nosplash \
-#	  -data ~/workspace \
-#	  -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
-#	  -import ~/workspace/$i
-#      else
-#        logmsg "Missing project file for $i?"
-#      fi
-#    done
+if [ ! -f $eclipse_base ]; then
+  logmsg "Missing $eclipse_base did you remove it?"
+else
+  if [ -d ~/eclipse ]; then
+    logmsg "Looks like eclipse is already installed"
+  else
+    logmsg "Restoring basic eclipse install from $eclipse_base"
+    cd ~
+    ~/bin/bar $eclipse_base | tar xfz -
+    logmsg "Import eclipse project settings (might take a few minutes)"
+    for i in Core3/MMOCoreORB PublicEngine/MMOEngine
+    do
+      if [ -f ~/workspace/$i/.project ]; then
+        logmsg "Importing $i"
+        ~/eclipse/eclipse \
+	  -nosplash \
+	  -data ~/workspace \
+	  -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+	  -import ~/workspace/$i
+      else
+        logmsg "Missing project file for $i?"
+      fi
+    done
 
-#    for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
-#    do
-#      logmsg "Setup Egit properties for "$(basename $dir)
-#      cd $dir
-#      tar xzf ~/setup/Egit-properties.tar.gz
-#    done
+    for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
+    do
+      logmsg "Setup Egit properties for "$(basename $dir)
+      cd $dir
+      tar xzf ~/setup/Egit-properties.tar.gz
+    done
 
-#    logmsg "Eclipse setup and import complete"
-#  fi
-#fi
+    logmsg "Eclipse setup and import complete"
+  fi
+fi
 
 
