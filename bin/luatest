@@ -1,0 +1,102 @@
+#!/bin/bash
+#
+# lua - Required programs and packages install for swgemu development environment
+#
+# Author: Scurby <scurby@swgemu.com>
+#
+# Created: Mar 4 2015
+#
+
+logger -t first "** FIRST **"
+
+##############################################################################
+# Common functions and setup
+##############################################################################
+yorn() {
+  echo -n -e "$@ Y\b"
+  read yorn
+  case $yorn in
+    [Nn]* ) return 1;;
+  esac
+  return 0
+}
+
+logmsg() {
+  echo "${tc_smso}**${tc_rmso} $*"
+  logger -t first "$*"
+}
+
+logstep() {
+  let "step=$step + 1"
+  echo ${tc_smso}$(head -c $(tput cols) < /dev/zero | tr '\0' '*')${tc_rmso}
+  echo "${tc_smso}**${tc_rmso} STEP $step >> $*"
+  logger -t first "STEP $step >> $*"
+}
+
+step=0
+tc_smso=$(tput smso)
+tc_rmso=$(tput rmso)
+
+
+
+
+logstep "Lua 5.1.4 Install"
+
+dir=~/setup/
+lua_base=~/setup/lua-5.1.4.tar.gz
+lua_ins=/usr/local/bin/lua
+
+if [ -f $lua_ins ]; then
+ logmsg "Great, looks like you have Lua installed.!"
+  else
+    while ! yorn "Would you like to install Lua 5.1.4 now??"
+      do
+        echo "***You need to do it before you can build the server.*** )"
+        sleep 1
+      done
+  if [ ! -f $lua_base ]; then
+    logmsg "Downloading required lua package to /home/setup/. Please wait.."
+    cd $dir
+    wget http://www.lua.org/ftp/lua-5.1.4.tar.gz
+  fi
+  logmsg
+  logmsg "Restoring basic lua install from $lua_base"
+  logmsg
+  for dir in ~/setup/
+    do
+      cd $dir
+      tar xzf ~/setup/lua-5.1.4.tar.gz >> install.txt
+      wget http://files.luaforge.net/releases/lnum/lnum/lnum-2009
+      cd lua-5.1.4
+      patch < ../lnum-2009
+      sudo make linux install >> install.txt
+      sudo make test
+      cd
+    done
+  logmsg " "
+  logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
+  logmsg " "
+fi
+
+
+## wget http://www.lua.org/ftp/lua-5.1.4.tar.gz && 
+#cd ~/setup/
+#tar -xvf lua-5.1.4.tar.gz && 
+##  wget http://files.luaforge.net/releases/lnum/lnum/lnum-2009 && 
+#cd lua-5.1.4
+## patch < ../../lnum-2009 && 
+#sudo make linux install && 
+#sudo make test && 
+#cd
+
+####################
+# Busted Tests Install
+# FIXME installs luarocks and busted
+####################
+#logstep "Busted Tests"
+#if yorn "Would you like to install Busted Tests?"; then
+#  logmsg "Installing busted test for lua..."
+#  sudo apt-get install -y luarocks >> install.txt
+#  sudo luarocks install busted >> install.txt
+#fi
+

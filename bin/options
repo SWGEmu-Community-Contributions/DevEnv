@@ -53,7 +53,7 @@ if yorn "Would you like to install the recommended packages via sudo apt-get com
   for i in vim xclip terminator chromium quassel git-cola git-review
     do
       logmsg " Installing ${i} ... "
-      sudo apt-get -q -y install ${i} >> options.txt
+      sudo apt-get -q -y install ${i} &>> ~/Documents/pkglog.txt
     done
 fi
 

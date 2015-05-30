@@ -55,7 +55,7 @@ if yorn "Would you like to install the required packages now??"; then
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
-        sudo apt-get -q -y install ${i} >> install.txt
+        sudo apt-get -q -y install ${i} &>> ~/Documents/pkglog.txt
       done
   else
     logmsg " You need to do it before you can build the server. "
@@ -91,9 +91,11 @@ if [ -f $lua_ins ]; then
   for dir in ~/setup/
     do
       cd $dir
-      tar xzf ~/setup/lua-5.1.4.tar.gz >> install.txt
+      tar xzf ~/setup/lua-5.1.4.tar.gz &>> ~/Documents/pkglog.txt
+#      wget http://files.luaforge.net/releases/lnum/lnum/lnum-2009
       cd lua-5.1.4
-      sudo make linux install >> install.txt
+#      patch < ../lnum-2009 &>> ~/Documents/pkglog.txt
+      sudo make linux install &>> ~/Documents/pkglog.txt
       sudo make test
       cd
     done
@@ -101,6 +103,7 @@ if [ -f $lua_ins ]; then
   logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
   logmsg " "
 fi
+
 
 ####################
 # Busted Tests Install
@@ -150,9 +153,9 @@ if [ -f $bdb_pkg ]; then
        tar xzf ~/setup/db-5.0.32.NC.tar.gz
        cd db-5.0.32.NC
        cd build_unix
-       sudo ../dist/configure --enable-cxx >> install.txt
-       sudo make >> install.txt
-       sudo make install >> install.txt
+       sudo ../dist/configure --enable-cxx &>> ~/Documents/pkglog.txt
+       sudo make &>> ~/Documents/pkglog.txt
+       sudo make install &>> ~/Documents/pkglog.txt
        cd ..
        cd ..
        echo "/usr/local/BerkeleyDB.5.0/lib" | sudo tee -a /etc/ld.so.conf
@@ -184,8 +187,8 @@ else
   cd
   sudo apt-get install mysql-server-core-5.5
   sudo apt-get install mysql-server-5.5
-  sudo apt-get install mysql-workbench    # not required. very useful.
-  sudo apt-get install libmysqlclient-dev
+  sudo apt-get install mysql-workbench &>> ~/Documents/pkglog.txt    # not required. very useful.
+  sudo apt-get install libmysqlclient-dev &>> ~/Documents/pkglog.txt
 fi
 
 ######################

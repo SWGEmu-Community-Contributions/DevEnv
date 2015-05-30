@@ -50,7 +50,7 @@ if yorn "Would you like to install the EXTRA packages now??"; then
       do
         sudo apt-get update
         logmsg " Installing ${i} ... "
-        sudo apt-get -q -y install ${i} >> extras.txt
+        sudo apt-get -q -y install ${i} &>> ~/Documents/pkglogextras.txt
       done
   else
     exit 0
