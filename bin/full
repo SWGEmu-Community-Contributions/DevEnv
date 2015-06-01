@@ -118,7 +118,7 @@ logstep "Recommended packages."
 logmsg  " The following packages or programs are recommended."
 logmsg	"vim, xclip, terminator, chromium, quassel, grep "
 if yorn "Would you like to install the recommended packages via sudo apt-get commands now??"; then
-  for i in vim xclip terminator chromium quassel grep git-review git-cola
+  for i in vim xclip terminator chromium-browser quassel grep git-review git-cola
     do
       logmsg " Installing ${i} ... "
       sudo apt-get -y install ${i} > /dev/null 2>&1 # make silent in terminsl
@@ -139,12 +139,11 @@ fi
 #################
 logstep "Required packages."
 logmsg  " The following packages or programs are required. "
-logmsg	 "gcc, g++, git, gdb, automake, make, libreadline-gplv2-dev, libncurses5-dev, libneon27, libaprutil1-dev, libtool, openjdk-6-jre, openjdk-6-jre-headless, libgtest-dev, libssl-dev, screen, Lua-5.1, Berkely DB 5.0, MySQL Server and Workbench "
+logmsg	""
 cd
 if yorn "Would you like to install the required packages now??"; then
   for i in automake g++ gcc gdb git libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-6-jre openjdk-6-jre-headless libgtest-dev libssl-dev
       do
-        sudo apt-get update
         logmsg " Installing ${i} ... "
         sudo apt-get -q -y install ${i} > /dev/null 2>&1
       done
@@ -188,9 +187,6 @@ if [ -f $lua_ins ]; then
   logmsg " "
   logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
   logmsg " "
-#  lognsg "Installing busted test for lua..."
-#  sudo apt-get install luarocks
-#  sudo luarocks install busted
 fi
    
 ####################
@@ -255,16 +251,15 @@ else
   cd
   sudo apt-get install mysql-server-core-5.5
   sudo apt-get install mysql-server-5.5
-  sudo apt-get install mysql-workbench    # not required. very useful.
-  sudo apt-get install libmysqlclient-dev
+  sudo apt-get -y install mysql-workbench > /dev/null 2>&1   # not required. very useful.
+  sudo apt-get -y install libmysqlclient-dev > /dev/null 2>&1
 fi
 
 ######################
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get update 
 sudo apt-get autoremove
 sudo service mysql start
 cd $dir
@@ -576,7 +571,6 @@ fi
 
 ##############################################################################
 # Ask them to configure their server options
-# TODO Edit tre path as needed
 ##############################################################################
 logstep "Server configuration"
 rundir=~/run

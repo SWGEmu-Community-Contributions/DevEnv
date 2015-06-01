@@ -51,22 +51,13 @@ if [ -x /usr/bin/chromium ]; then
   BROWSER=/usr/bin/chromium
 fi
 
-
-
 ##############################################################################
 # Setup eclipse if we have the setup file
 # TODO Edit for working directory name
 # TODO Edit eclipse_base= to desired eclipse tarball
 #####################
 #  Base install option -eclipse 3.8
-#sudo apt-get update
-#sudo apt-get install eclipse
-#sudo apt-get install eclipse-cdt
-#sudo apt-get install eclipse-egit
-#OR
-#cd setup
-#http://developer.eclipsesource.com/technology/epp/juno/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
-#
+# sudo apt-get install eclipse eclipse-cdt eclipse-egit
 ##############################################################################
 logstep "Setup Eclipse"
 

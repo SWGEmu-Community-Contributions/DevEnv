@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# first - Optional programs and packages install for swgemu development environment
+# first - Recommended programs and packages install for swgemu development environment
 #
 # Author: Scurby <scurby@swgemu.com>
 #
@@ -38,8 +38,7 @@ tc_rmso=$(tput rmso)
 
 #################
 # Recommended packages
-# xclip terminator vim chromium quassel git-cola
-# TODO add more options. docs, 
+# xclip terminator vim chromium quassel git-cola etc... 
 #################
 logstep "Recommended packages."
 logmsg  " The following packages or programs are recommended. "
@@ -50,14 +49,16 @@ logmsg	    " Add or remove as needed in '/home/bin/options' "
 logmsg
 
 if yorn "Would you like to install the recommended packages via sudo apt-get commands now??"; then
-  for i in vim xclip terminator chromium quassel git-cola git-review
+  for i in vim xclip terminator chromium-browser quassel git-cola git-review gedit gedit-plugins
     do
       logmsg " Installing ${i} ... "
       sudo apt-get -q -y install ${i} &>> ~/Documents/pkglog.txt
     done
 fi
-
+#################
 #Dropbox headless
+#################
+logstep "Dropbox"
 if yorn "Would you like to install Dropbox??"; then
       cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
       nohup gnome-terminal --title 'Dropbox' -e ~/.dropbox-dist/dropboxd & disown
@@ -68,9 +69,9 @@ fi
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-#  sudo apt-get -q -y update >> update.txt
-#  sudo apt-get -q -y upgrade >> update.txt
-#  sudo apt-get -q -y autoremove >> update.txt
+  sudo apt-get -q -y update &>> ~/Documents/pkglog.txt
+#  sudo apt-get -q -y upgrade &>> ~/Documents/pkglog.txt
+#  sudo apt-get -q -y autoremove &>> ~/Documents/pkglog.txt
   logmsg 
   logmsg "Thanks for the fish...  "
   logmsg 

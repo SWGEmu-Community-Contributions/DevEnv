@@ -1,8 +1,7 @@
 #!/bin/bash
 
 ##############################################################################
-# Make easy links 
-# Option 1
+# Symlinks and idlc install 
 # sudo cp /home/swgemu/workspace/MMOEngine/bin/idlc /usr/local/bin && sudo chmod 755 /usr/local/bin/idlc
 ##############################################################################
 

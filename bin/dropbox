@@ -2,22 +2,22 @@
 #
 # Headless Dropbox
 #
+
 # You can install Dropbox on a Linux server or any Linux system that doesn't have a monitor or a GUI Windowing System.
 
 # I recently installed Dropbox on my Digital Ocean Droplet, running Ubuntu 12.10 server. I did not figure this all out on my own. I read the sources mentioned at the bottom of this post. However, some of the information was incomplete or contained broken links, and I ran into other issues. So this this blog post is more of about how I got it working, in hopes that you won't encounter the same issues that I did.
+echo "Sources:"
+echo "https://www.dropbox.com/install?os=linux"
+echo ""
+echo "First, you will need to link your Linux machine with your Dropbox account by downloading and running a Dropbox server script called dropboxd:"
+echo ""
+echo "cd   changes to your $HOME directory"
+echo "wget -O - "https://www.dropbox.com/download?plat=lnx.x86"|tar xzf -"
+echo "~/.dropbox-dist/dropboxd"
+echo ""
+echo " Use the above command if you're running "uname -m" says i686."
 
-#echo "Sources:"
-#echo "https://www.dropbox.com/install?os=linux"
-#echo ""
-#echo "First, you will need to link your Linux machine with your Dropbox account by downloading and running a Dropbox server script called dropboxd:"
-#echo ""
-#echo "cd  # changes to your $HOME directory"
-#echo "wget -O - "https://www.dropbox.com/download?plat=lnx.x86"|tar xzf -"
-#echo "~/.dropbox-dist/dropboxd"
-#echo ""
-#echo " Use the above command if you're running "uname -m" says i686."
-
-## FIXME
+# FIXME
 #if "uname -m" says x86_64.; then
 #  cd
 #  wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64"|tar xzf -
@@ -38,7 +38,7 @@
 
 
 #echo " and download a bash script that we'll use to start and stop Dropbox:"
-##
+
 #wget -O ~/bin/dropbox_temp "https://gist.githubusercontent.com/benhedrington/2347727/raw/108fc8af551cb4fdf7cdd08b891a45f405d283dc/dropbox"
 #chmod u+x ~/bin/dropbox_temp
 #echo ""
