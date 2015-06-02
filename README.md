@@ -57,13 +57,9 @@ We can now save the file and close it. By default, you can do that by typing Ctr
 =====================
 # Import scripts  
 =====================
-Copy this series of commands into a sudo terminal: Installs git, downloads scripts and installs them. Reboots the system. SAVE ALL WORK FIRST!!!
+Copy this series of commands into a sudo terminal: Installs git, downloads scripts and installs them.
 
-	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && cp -i /home/swgemu/Testing/README.md /home/swgemu/Documents && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -r /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && PATH=$PATH:$HOME/bin $$ sudo /sbin/reboot
-=====================
-# Restart
-	
-Your system should reboot when you run the commands above. If it does then you have successfully installed the scripts and are ready to proceed with the SWGEmu Dev Env setup.
+	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && cp -i /home/swgemu/Testing/README.md /home/swgemu/Documents && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -r /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && PATH=$PATH:$HOME/bin
 
 =====================
 # Run setup scripts
