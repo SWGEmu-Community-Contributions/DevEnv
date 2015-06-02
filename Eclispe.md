@@ -1,11 +1,3 @@
-openfile {filename} - open file in eclipse *FIXME*
-ide - Choose IDE and/or options
-idlc - idlc install tool
-eclipse - install eclipse, import project and set git properties. *FIXME*
-	(Requires Egit-properties.tar.gz in /home/setup/
-
-**************************************************************************************
-===============
 # Eclipse  
 Not complete
  
@@ -48,4 +40,11 @@ Click OK and then Apply
 Once added, select the project again and right click, then index/rebuild (may take a while)
 
 Close Eclipse and then re-open it, Carry on working as normal but with the newer version
+
+***********************************************************************************************
+openfile {filename} - open file in eclipse *FIXME*
+ide - Choose IDE and/or options
+idlc - idlc install tool
+eclipse - install eclipse, import project and set git properties. *FIXME*
+	(Requires Egit-properties.tar.gz in /home/setup/
 
