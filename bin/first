@@ -78,6 +78,7 @@ if [ -f $lua_ins ]; then
     logmsg "Downloading required lua package to /home/setup/. Please wait.."
     cd $dir
     wget http://www.lua.org/ftp/lua-5.1.4.tar.gz
+    wget http://files.luaforge.net/releases/lnum/lnum/lnum-2009/lua514-lnum-20090417.patch.tgz
   fi
   logmsg
   logmsg "Restoring basic lua install from $lua_base"
@@ -86,9 +87,9 @@ if [ -f $lua_ins ]; then
     do
       cd $dir
       tar xzf ~/setup/lua-5.1.4.tar.gz &>> ~/Documents/pkglog.txt
-#      wget http://files.luaforge.net/releases/lnum/lnum/lnum-2009
+      tar xzf ~/setup/lua514-lnum-20090417.patch.tgz
       cd lua-5.1.4
-#      patch < ../lnum-2009 &>> ~/Documents/pkglog.txt
+      patch < ../lnum-2009/lua514-lnum-20090417.patch &>> ~/Documents/pkglog.txt
       sudo make linux install &>> ~/Documents/pkglog.txt
       sudo make test
       cd
