@@ -43,7 +43,7 @@ tc_rmso=$(tput rmso)
 logstep "Recommended packages."
 logmsg  " The following packages or programs are recommended. "
 logmsg
-logmsg	" vim  xclip terminator chromium quassel git-cola etc. "
+logmsg	" vim xclip terminator chromium quassel git-cola etc. "
 logmsg	
 logmsg	    " Add or remove as needed in '/home/bin/options' "
 logmsg
