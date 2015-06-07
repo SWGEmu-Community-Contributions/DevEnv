@@ -49,9 +49,9 @@ swgemu:123456
 cat << ! > /home/swgemu/00README
 ##############################################################################
 #
-# Welcome to the SWGEMU Fast Track setup scripts for Developers
+# Welcome to the SWGEMU Development Environment setup scripts for Developers
 #
-# See: http://www.swgemu.com/forums/showthread.php?t=61008 for details
+# See README.md  for details
 #
 # Please reference version $VERSION in posts for help or comments.
 #
@@ -63,9 +63,9 @@ cat << ! > /home/swgemu/00README
 #
 # To get started login as 'swgemu' (via SSH or the console) type:
 #
-# options - Optional
-# first
-# start
+# 1. options
+# 2. first
+# 3. start
 #
 ##############################################################################
 !
