@@ -48,9 +48,7 @@ The following scripts are run from the command line. They are numbered in the or
 
 2. first - Installs required packages and programs including Lua, BerkelyDB, and others. Asks to run 'start' script.
 
-3. extras - Installs EXTRA packages.
-
-4. start - Setup of development environment follow the steps below:
+3. start - Setup of development environment follow the steps below:
 
 	- Choose editor
 	- Setup git user.* config
@@ -65,17 +63,19 @@ The following scripts are run from the command line. They are numbered in the or
 	- Tre files
 	- Asks if you want to build and run the server. 
 
-5. build - simple build script
+4. build - simple build script
 
 	- 3 options- build, build config, build clean
 
-6. run_dev - Builds and run the development server and launch it under gdb on a 'screen'.  
+5. run_dev - Builds and run the development server and launch it under gdb on a 'screen'.  
 Using this command to start the server will also output a screenlog to ~/run/ and use the config.lua in ~/run/conf/ to relace the config.lusa in the core.  
 Also, run_dev uses gdb in batch mode and starts with the commands  in ~/run/run_gdb which you can change to your pleasing;
 	(breakpoints, dumps, settings etc.)
 
 **************************************************************************************
 # The following scripts are also useful...
+
+extras - Installs EXTRA packages.
 
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
 
@@ -88,7 +88,7 @@ bang - dl's and installs these scripts
 cleanup_for_publish - Strips virtual machine down for distribution, creates version number, resets pwds, etc. USE WITH CAUTION!!!
 
 createdb - mysql table, user, and pwd tool.
-(http://jetpackweb.com/blog/2009/07/20/bash-script-to-create-mysql-database-and-user/)
+Ref: (http://jetpackweb.com/blog/2009/07/20/bash-script-to-create-mysql-database-and-user/)
 
 setup - dl and install scripts
 
@@ -107,10 +107,19 @@ thaw - allow server to continue from previous state each time you run it.
 installed - Package and version check saved to /home/<file>.txt.
 
 **************************************************************************************
-*FIXME* *FIXME* *FIXME*
+
+Useful Stuff
+
+	git log --pretty=format:'%h was %an, %ar, message: %s' -10
+
+	PATH=$PATH:$HOME/bin
+
+**************************************************************************************
+#FIXME's
+
 dropbox - DL and install dropbox
 
-openfile {filename} - open file in eclipse *FIXME*
+openfile {filename} - open file in eclipse
 
 idlc - idlc install tool
 
@@ -119,13 +128,3 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 	(May requires indexing exlusions)
 
 **************************************************************************************
-
-
-**************************************************************************************
-
-Useful Stuff
-
-	git log --pretty=format:'%h was %an, %ar, message: %s' -10
-
-	PATH=$PATH:$HOME/bin
-
