@@ -1,4 +1,5 @@
 # SWGEmu Development Environment setup
+
 ****************************************************************************************************************
 Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository is based on. 
 ****************************************************************************************************************
@@ -75,6 +76,10 @@ Also, run_dev uses gdb in batch mode and starts with the commands  in ~/run/run_
 **************************************************************************************
 # The following scripts are also useful...
 
+eclipse - install eclipse luna, import project and set git properties.
+	(Requires Egit-properties.tar.gz in /home/setup/ )
+	(May require indexing exlusions)
+
 extras - Installs EXTRA packages.
 
 ack - Nice source grep tool (try: cd ~/workspace/MMOCoreORB/src; ack PlanetManager).
@@ -90,9 +95,7 @@ cleanup_for_publish - Strips virtual machine down for distribution, creates vers
 createdb - mysql table, user, and pwd tool.
 Ref: (http://jetpackweb.com/blog/2009/07/20/bash-script-to-create-mysql-database-and-user/)
 
-setup - dl and install scripts
-
-godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
+idlc - idlc install tool
 
 myip -  display the ip of the VM and login port for quick configuration of the windows client.
 
@@ -117,14 +120,8 @@ Useful Stuff
 **************************************************************************************
 #FIXME's
 
-dropbox - DL and install dropbox
-
 openfile {filename} - open file in eclipse
 
-idlc - idlc install tool
-
-eclipse - install eclipse, import project and set git properties. *FIXME*
-	(Requires Egit-properties.tar.gz in /home/setup/ )
-	(May requires indexing exlusions)
+godmode - sets acct with ID=1 to Admin (15). Run after first acct is created.
 
 **************************************************************************************
