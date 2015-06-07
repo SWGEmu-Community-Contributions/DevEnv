@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-#
-# FIXME
+# eclipse - Installed Eclipse Luna C++ 
 
 logger -t eclipse "** eclipse **"
 
@@ -42,18 +41,8 @@ step=0
 tc_smso=$(tput smso)
 tc_rmso=$(tput rmso)
 
-
-# TODO Add check for default browser
-# Edit browser as desired.
-export BROWSER=chromium
-
-if [ -x /usr/bin/chromium ]; then
-  BROWSER=/usr/bin/chromium
-fi
-
 ##############################################################################
-# Setup eclipse if we have the setup file
-# TODO Edit for working directory name
+# Setup eclipse
 # TODO Edit eclipse_base= to desired eclipse tarball
 #####################
 #  Base install option -eclipse 3.8
@@ -61,41 +50,41 @@ fi
 ##############################################################################
 logstep "Setup Eclipse"
 
-eclipse_base=~/setup/eclipse-clean.tar.gz
+dir=~/setup/
+eclipse_base=~/setup/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
 
 if [ ! -f $eclipse_base ]; then
-  logmsg "Missing $eclipse_base did you remove it?"
-else
-  if [ -d ~/eclipse ]; then
-    logmsg "Looks like eclipse is already installed"
-  else
-    logmsg "Restoring basic eclipse install from $eclipse_base"
-    cd ~
-    ~/bin/bar $eclipse_base | tar xfz -
-    logmsg "Import eclipse project settings (might take a few minutes)"
-    for i in Core3/MMOCoreORB PublicEngine/MMOEngine
-    do
-      if [ -f ~/workspace/$i/.project ]; then
-        logmsg "Importing $i"
-        ~/eclipse/eclipse \
-	  -nosplash \
-	  -data ~/workspace \
-	  -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
-	  -import ~/workspace/$i
-      else
-        logmsg "Missing project file for $i?"
-      fi
-    done
-
-    for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
-    do
-      logmsg "Setup Egit properties for "$(basename $dir)
-      cd $dir
-      tar xzf ~/setup/Egit-properties.tar.gz
-    done
-
-    logmsg "Eclipse setup and import complete"
-  fi
+  cd $dir
+  wget http://developer.eclipsesource.com/technology/epp/luna/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
 fi
 
+if [ -d ~/eclipse ]; then
+  logmsg "Looks like eclipse is already installed"
+else
+  logmsg "Restoring basic eclipse install from $eclipse_base"
+  cd ~
+  ~/bin/bar $eclipse_base | tar xfz -
+  logmsg "Import eclipse project settings (might take a few minutes)"
+  for i in Core3/MMOCoreORB PublicEngine/MMOEngine Tools
+  do
+    if [ -f ~/workspace/$i/.project ]; then
+      logmsg "Importing $i"
+      ~/eclipse/eclipse \
+      -nosplash \
+      -data ~/workspace \
+      -application org.eclipse.cdt.managedbuilder.core.headlessbuild \
+      -import ~/workspace/$i
+    else
+      logmsg "Missing project file for $i?"
+    fi
+  done
 
+  for dir in ~/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects/*
+  do
+    logmsg "Setup Egit properties for "$(basename $dir)
+    cd $dir
+    tar xzf ~/setup/Egit-properties.tar.gz
+  done
+  logmsg "Eclipse setup and import complete"
+  logmsg "Add Resource filter. Exclude all files and folders named 'utils' "
+fi
