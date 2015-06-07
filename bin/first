@@ -46,7 +46,7 @@ logmsg  " The following packages or programs are required. Be prepared to enter 
 logmsg 
 cd
 if yorn "Would you like to install the required packages now??"; then
-  for i in autoconf automake autotools-dev g++ gcc gccxml gdb git libc6-dev libdb-dev libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-7-jre openjdk-7-jre-headless libgtest-dev libssl-dev liblua5.1-0-dev 
+  for i in autoconf automake autotools-dev g++ gcc gccxml gdb git libc6-dev libdb-dev libtool make screen libreadline-gplv2-dev libncurses5-dev libneon27 libaprutil1-dev openjdk-7-jre openjdk-7-jre-headless libgtest-dev libssl-dev liblua5.1-0-dev
       do
         logmsg " Installing ${i} ... "
         sudo apt-get -q -y install ${i} &>> ~/Documents/pkglog.txt
@@ -89,7 +89,7 @@ if [ -f $lua_ins ]; then
       tar xzf ~/setup/lua-5.1.4.tar.gz &>> ~/Documents/pkglog.txt
       tar xzf ~/setup/lua514-lnum-20090417.patch.tgz
       cd lua-5.1.4
-      patch < ../lnum-2009/lua514-lnum-20090417.patch &>> ~/Documents/pkglog.txt
+#FIXME      patch < ../lnum-2009/lua514-lnum-20090417.patch &>> ~/Documents/pkglog.txt
       sudo make linux install &>> ~/Documents/pkglog.txt
       sudo make test
       cd
@@ -98,18 +98,6 @@ if [ -f $lua_ins ]; then
   logmsg "You have successfully installed Lua if you see 'Hello world, from Lua 5.1!' in the terminal."
   logmsg " "
 fi
-
-
-####################
-# Busted Tests Install
-# FIXME installs luarocks and busted
-####################
-#logstep "Busted Tests"
-#if yorn "Would you like to install Busted Tests?"; then
-#  logmsg "Installing busted test for lua..."
-#  sudo apt-get install -y luarocks >> install.txt
-#  sudo luarocks install busted >> install.txt
-#fi
 
 ####################
 # Berkely DB Install
