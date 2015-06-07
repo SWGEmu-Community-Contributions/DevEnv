@@ -1,8 +1,7 @@
-# Testing
+# SWGEmu Development Environment setup
 ****************************************************************************************************************
 Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository is based on. 
 ****************************************************************************************************************
-Dev Env Setup Testing
 
 VirtualBox, VMWare, or native install.
 
@@ -25,43 +24,24 @@ Predefined software selections - Default selection
 	    (*) Gnome
 	(*)Print Server
 	(*)Standard System Utilities
+	
 # Config sudoer as needed 
 
 https://www.digitalocean.com/community/tutorials/how-to-add-delete-and-grant-sudo-privileges-to-users-on-a-debian-vps
 
-We give users access to the sudo command with the visudo command. If you have not assigned additional privileges to any user yet, you will need to be logged in as root to access this command:
-
-	visudo
-	
-When you type this command, you will be taken into a text editor session with the file that defines sudo privileges pre-loaded. We will have to add our user to this file to grant our desired access rights.
-
-Find the part of the file that is labeled "Allow members of group sudo to execute any command". It should look something like this:
-
-	# Allow members of group sudo to execute any command
-	%sudo   ALL=(ALL:ALL) ALL
-
-	
-We give a user sudo privileges by copying the line beginning with "%sudo" and pasting it after. We then change the user "%sudo" on the new line to our new user, like this:
-
-	# Allow members of group sudo to execute any command
-	%sudo   ALL=(ALL:ALL) ALL
-	%newuser   ALL=(ALL:ALL) ALL
-	
-We can now save the file and close it. By default, you can do that by typing Ctrl-X and then typing "Y" and pressing "Enter".
-
 # Run Updates
 
 	sudo apt-get update
-=====================
+
 # Import scripts  
-=====================
+
 Copy this series of commands into a sudo terminal: Installs git, downloads scripts and installs them.
 
 	sudo apt-get install -y -q git && git clone https://github.com/Scurby/Testing.git && cp -i /home/swgemu/Testing/README.md /home/swgemu/Documents && mkdir bin && cp -i /home/swgemu/Testing/bin/* /home/swgemu/bin/ && mkdir setup && cp -i /home/swgemu/Testing/setup/* /home/swgemu/setup/ && mkdir run && cp -r /home/swgemu/Testing/run/* /home/swgemu/run/ && chmod -v +x /home/swgemu/bin/* && PATH=$PATH:$HOME/bin
 
-=====================
+
 # Run setup scripts
-=====================
+
 The following scripts are run from the command line. They are numbered in the order I use them. 
 
 1. options - Installs Optional packages including xclip, vim, quassel, and others. Asks to run 'first' script.
@@ -70,7 +50,7 @@ The following scripts are run from the command line. They are numbered in the or
 
 3. extras - Installs EXTRA packages.
 
-4. start - Initial setup of development environment
+4. start - Setup of development environment follow the steps below:
 
 	- Choose editor
 	- Setup git user.* config
@@ -89,11 +69,9 @@ The following scripts are run from the command line. They are numbered in the or
 
 	- 3 options- build, build config, build clean
 
-6. run_dev - Builds and run the development server and launch it under gdb on a 'screen'
-
-	***NOTE: run_dev uses gdb in batch mode and starts with the commands
-	in ~/run/run_gdb which you can change to your pleasing;
+6. run_dev - Builds and run the development server and launch it under gdb on a 'screen'.  Using this command to start the server will also output a screenlog to ~/run/ and use the config.lua in ~/run/conf/ to relace the config.lusa in the core.  Also, run_dev uses gdb in batch mode and starts with the commands  in ~/run/run_gdb which you can change to your pleasing;
 	(breakpoints, dumps, settings etc.)
+
 **************************************************************************************
 # The following scripts are also useful...
 
@@ -131,8 +109,6 @@ installed - Package and version check saved to /home/<file>.txt.
 dropbox - DL and install dropbox
 
 openfile {filename} - open file in eclipse *FIXME*
-
-ide - Choose IDE and/or options
 
 idlc - idlc install tool
 
