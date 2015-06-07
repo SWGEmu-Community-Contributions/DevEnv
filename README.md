@@ -1,22 +1,21 @@
 # Testing
+****************************************************************************************************************
+Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository is based on. 
+****************************************************************************************************************
 Dev Env Setup Testing
 
-VirtualBox, VMWare, or native install. Edit as needed 
-https://www.virtualbox.org/wiki/Downloads 
-https://my.vmware.com/web/vmware/free#desktop_end_user_computing/vmware_player/7_0
+VirtualBox, VMWare, or native install.
 
 	8g mem
 	32g virtual drive
 	max cores
 	bridged network
 
-# Install 64 bit OS - Debian 7 + 8, pointLinux, MakuluLinux, CentOS
+# Install 64 bit OS - Debian 7 + 8, pointLinux, MakuluLinux
 Current test = Ubuntu 12.04 with Gnome Classic Tweaks
  
-	Should work on any debian package distro
-	https://www.debian.org/distrib/
 ****************
-	username=swgemu  - TODO make configurable
+	username=swgemu
 	password=123456
 	root pw=12345678
 ****************
@@ -53,7 +52,6 @@ We can now save the file and close it. By default, you can do that by typing Ctr
 # Run Updates
 
 	sudo apt-get update
-	sudo apt-get upgrade
 =====================
 # Import scripts  
 =====================
@@ -66,40 +64,11 @@ Copy this series of commands into a sudo terminal: Installs git, downloads scrip
 =====================
 The following scripts are run from the command line. They are numbered in the order I use them. 
 
-1. options - Installs Optional packages
+1. options - Installs Optional packages including xclip, vim, quassel, and others. Asks to run 'first' script.
 
-	- xclip 
-	- terminator 
-	- vim 
-	- chromium 
-	- quassel
-	- git-cola
-	- git-review
-	- Asks to run 'first' script
-        
-2. first - Installs required packages and programs
+2. first - Installs required packages and programs including Lua, BerkelyDB, and others. Asks to run 'start' script.
 
-	- gcc, g++, git, gdb, automake, make, libreadline-gplv2-dev
-	- libncurses5-dev, libneon27, libaprutil1-dev, libtool
-	- openjdk-6-jre, openjdk-6-jre-headless, libgtest-dev, screen
-	- Lua-5.1 - Berkely DB 5.0 - MySQL Server and Workbench
-	- Asks to run 'start' script
-
-3. extras - Install the following EXTRA packages.
-	
-	libgtest-dev ctags vim-doc vim-scripts chromium-l10n gawk-doc 
-	firmware-crystalhd libqca2-plugin-cyrus-sasl libqca2-plugin-gnupg 
-	libqca2-plugin-ossl libqt4-dev qt4-qtconfig phonon-backend-gstreamer 
-	phonon-backend-mplayer videolan-doc autoconf2.13 autoconf-archive 
-	gnu-standards autoconf-doc libtool gettext g++-multilib 
-	g++-4.7-multilib gcc-4.7-doc libstdc++6-4.7-dbg libstdc++6-4.7-doc 
-	gdb-doc git-daemon-run git-daemon-sysvinit git-doc git-el git-arch 
-	git-cvs git-svn git-email git-gui gitk gitweb openssh-server 
-	libtool-doc gfortran fortran95-compiler gcj doc-base krb5-doc 
-	krb5-user postgresql-doc-9.1 sqlite3-doc libipc-sharedcache-perl 
-	libterm-readkey-perl tinyca python-crypto-dbg python-crypto-doc 
-	python-pysqlite2-doc python-pysqlite2-dbg apache2-doc apache2-suexec 
-	apache2-suexec-custom httpd-cgi libcgi-fast-perl 
+3. extras - Installs EXTRA packages.
 
 4. start - Initial setup of development environment
 
@@ -172,8 +141,7 @@ eclipse - install eclipse, import project and set git properties. *FIXME*
 	(May requires indexing exlusions)
 
 **************************************************************************************
-Special Thanks to lordkator for the initial FastTrack VM Image and the scripts that this repository is based on. 
-- Scurby
+
 
 **************************************************************************************
 
