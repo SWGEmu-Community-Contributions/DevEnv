@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Borrowed from google search
+# Borrowed from http://jetpackweb.com/blog/2009/07/20/bash-script-to-create-mysql-database-and-user/
 # REQUIRES ROOT PERMISSIONS
 # Syntax = createdb dbname dbuser dbpass
   
