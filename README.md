@@ -69,7 +69,9 @@ The following scripts are run from the command line. They are numbered in the or
 
 	- 3 options- build, build config, build clean
 
-6. run_dev - Builds and run the development server and launch it under gdb on a 'screen'.  Using this command to start the server will also output a screenlog to ~/run/ and use the config.lua in ~/run/conf/ to relace the config.lusa in the core.  Also, run_dev uses gdb in batch mode and starts with the commands  in ~/run/run_gdb which you can change to your pleasing;
+6. run_dev - Builds and run the development server and launch it under gdb on a 'screen'.  
+Using this command to start the server will also output a screenlog to ~/run/ and use the config.lua in ~/run/conf/ to relace the config.lusa in the core.  
+Also, run_dev uses gdb in batch mode and starts with the commands  in ~/run/run_gdb which you can change to your pleasing;
 	(breakpoints, dumps, settings etc.)
 
 **************************************************************************************
