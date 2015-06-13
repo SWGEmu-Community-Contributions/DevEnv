@@ -11,8 +11,8 @@ VirtualBox, VMWare, or native install.
 	max cores
 	bridged network
 
-# Install 64 bit OS - Debian 7 + 8, pointLinux, MakuluLinux
-Current test = Ubuntu 12.04 with Gnome Classic Tweaks
+# Install 64 bit OS
+Debian 7, Debian 8, pointLinux, MakuluLinux, LinuxMint Debian Edition.
  
 ****************
 	username=swgemu
