@@ -48,7 +48,7 @@ tc_rmso=$(tput rmso)
 #  Base install option -eclipse 3.8
 # sudo apt-get install eclipse eclipse-cdt eclipse-egit
 ##############################################################################
-logstep "Setup Eclipse"
+logstep "Setup Eclipse Luna"
 
 dir=~/setup/
 eclipse_base=~/setup/eclipse-cpp-luna-SR2-linux-gtk-x86_64.tar.gz
@@ -61,7 +61,7 @@ fi
 if [ -d ~/eclipse ]; then
   logmsg "Looks like eclipse is already installed"
 else
-  logmsg "Restoring basic eclipse install from $eclipse_base"
+  logmsg "Restoring basic eclipse install from $eclipse_base "
   cd ~
   ~/bin/bar $eclipse_base | tar xfz -
   logmsg "Import eclipse project settings (might take a few minutes)"
@@ -86,5 +86,7 @@ else
     tar xzf ~/setup/Egit-properties.tar.gz
   done
   logmsg "Eclipse setup and import complete"
-  logmsg "Add Resource filter. Exclude all files and folders named 'utils' "
+  logmsg "Open eclipse, right click 'MMOCoreORB' > Properties > Resoure > Resource filter > Add filter. Exclude all files and folders named 'utils' "
+  logmsg "Right click 'MMOCoreORB' > Index > Freshen all files "
+  logmsg "Add extensions as desired. (LDT recommended) "
 fi
