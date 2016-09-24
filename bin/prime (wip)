@@ -1,0 +1,93 @@
+#!/bin/bash
+#
+#
+#
+#
+# open terminal - log in as root
+
+
+##############################################################################
+# Common functions and setup
+##############################################################################
+yorn() {
+  echo -n -e "$@ Y\b"
+  read yorn
+  case $yorn in
+    [Nn]* ) return 1;;
+  esac
+  return 0
+}
+
+##############################################################################
+cd
+clear
+echo Debian seems to not have sudo installed by default.  
+echo Here is how to install sudo and add your username to the sudoers file.
+echo 
+echo Open the Terminal
+echo     - Click "Activities"
+echo     - Click in the "Type to search..." box
+echo     - Type in "Terminal" and press the [enter] key
+echo 
+echo Switch to root user
+echo     - Type in the Terminal the following command
+echo         su
+echo     - then press [enter]
+echo     - now type in the root password and press [enter]
+echo         - The command prompt should now look like this...
+echo             root@debian:/home/yourusernamehere#
+echo     
+echo Install "sudo"
+echo     - Now that you are root user within the Terminal lets install "sudo"
+echo     - Type in the following command...
+echo         apt-get install sudo
+echo     - then press [enter]
+echo 
+echo Add your username to the sudo group
+echo     - Type in the following command...
+echo         adduser yourusernamehere sudo
+echo     - then press [enter]
+echo     
+echo Now add your name to /etc/sudoers file
+echo     - Type in the following command...
+echo         nano /etc/sudoers
+echo     - then press [enter]
+echo     - Scroll down and look for the line "%sudo  ALL=(ALL:ALL) ALL"
+echo     - Below that line type in the following...
+echo         yourusernamehere  ALL=(ALL:ALL) ALL
+echo     - Press "Ctrl+x" then press "y" and then press [enter] to exit and save the file
+echo     
+echo Now we exit out of the Terminal completely
+echo     - Type in the following command...
+echo         exit
+echo     - then press [enter]
+echo     - Type exit again...
+echo         exit
+echo     - then press [enter]
+echo     - That should have closed the Terminal application 
+echo     
+echo Now let's open a new Terminal and test to see if sudo is working for your user name
+echo     - Click "Activities"
+echo     - Click in the "Type to search..." box
+echo     - Type in "Terminal" and press the [enter] key
+echo     - Test sudo by typing the following command...
+echo         sudo ls
+echo     - then press [enter]
+echo     - type in your password and press [enter]
+echo 
+echo     - If the output looks like the following...
+echo         yourusernamehere is not in the sudoers file.  This incident will be reported.
+echo     - then you might have to start from the beginning of these instructions and try again.
+echo 
+echo     - If the output looks like this...
+echo         Desktop  Documents  Downloads  Music  Pictures  Public  Templates  Videos
+echo     - Your username now has sudo rights, congratulations!
+echo 
+echo Enjoy!
+if yorn "Would you like to open a root terminal now?"; then
+#    su
+    nohup gnome-terminal --title 'prime' -e su
+  else
+  exit 0
+fi
+exit 0

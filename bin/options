@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# first - Recommended programs and packages install for swgemu development environment
+# options - Recommended programs and packages install for swgemu development environment
 #
 # Author: Scurby <scurby@swgemu.com>
 #
@@ -49,7 +49,7 @@ logmsg	    " Add or remove as needed in '/home/bin/options' "
 logmsg
 
 if yorn "Would you like to install the recommended packages via sudo apt-get commands now??"; then
-  for i in vim xclip terminator chromium-browser quassel git-cola git-review gedit gedit-plugins
+  for i in vim xclip terminator quassel git-cola git-review gedit gedit-plugins
     do
       logmsg " Installing ${i} ... "
       sudo apt-get -q -y install ${i} &>> ~/Documents/pkglog.txt
@@ -61,7 +61,8 @@ fi
 logstep "Dropbox"
 if yorn "Would you like to install Dropbox??"; then
       cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-      nohup gnome-terminal --title 'Dropbox' -e ~/.dropbox-dist/dropboxd & disown
+      ~/.dropbox-dist/dropboxd & disown
+# TODO - Add panel link
 fi
 
 
@@ -69,13 +70,11 @@ fi
 # Remove un-needed files
 ######################
 logstep "Finalizing install and removing un-needed files."
-  sudo apt-get -q -y update &>> ~/Documents/pkglog.txt
+  sudo apt-get -q -y update
 #  sudo apt-get -q -y upgrade &>> ~/Documents/pkglog.txt
 #  sudo apt-get -q -y autoremove &>> ~/Documents/pkglog.txt
   logmsg 
   logmsg "Thanks for the fish...  "
   logmsg 
-if yorn "Would you like to run 'first' now?"; then
-   ~/bin/first
-fi
+
 exit 0
